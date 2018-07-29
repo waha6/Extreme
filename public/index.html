@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Full Screen">
+    <title>Extreme | Pakistan Market App</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" href="./styles/style[small].css" media="only screen and (max-width:639px) and (min-width:460px)">
+    <link rel="stylesheet" href="./styles/style[medium].css" media="only screen and (max-width:991px) and (min-width:640px)">
+    <link rel="stylesheet" href="./styles/style[large].css" media="only screen and (max-width:1199px) and (min-width:992px)">
+    <link rel="stylesheet" href="./styles/style[exlarge].css" media="only screen and (min-width:1200px)">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="images/icons/icon-72x72.png">
+</head>
+
+<body>
+    <div id="err" class="sideerr hide">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav(this.parentNode)">&times;</a>
+        <span id="errmessage"></span>
+    </div>
+    <header class="f50">
+        <div class="f50">
+            <div>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav(document.querySelector('#nav'))" class="open icon">&#9776;</span>
+                <span style="cursor:pointer;display: none" onclick="if(history.length<2){history.replaceState(null,'homepage','./#');changeIcon();homePage()}else history.back()" class="back icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 492 492" xml:space="preserve" width="40px" height="30px">
+                    <g>
+                        <g>
+                            <path d="M464.344,207.418l0.768,0.168H135.888l103.496-103.724c5.068-5.064,7.848-11.924,7.848-19.124    c0-7.2-2.78-14.012-7.848-19.088L223.28,49.538c-5.064-5.064-11.812-7.864-19.008-7.864c-7.2,0-13.952,2.78-19.016,7.844    L7.844,226.914C2.76,231.998-0.02,238.77,0,245.974c-0.02,7.244,2.76,14.02,7.844,19.096l177.412,177.412    c5.064,5.06,11.812,7.844,19.016,7.844c7.196,0,13.944-2.788,19.008-7.844l16.104-16.112c5.068-5.056,7.848-11.808,7.848-19.008    c0-7.196-2.78-13.592-7.848-18.652L134.72,284.406h329.992c14.828,0,27.288-12.78,27.288-27.6v-22.788    C492,219.198,479.172,207.418,464.344,207.418z" fill="#FFFFFF"/>
+                        </g>
+                    </g>
+                    </svg></span>
+            </div>
+            <div class="icon">
+                <img src="images/icons/icon-144x144.png" height="40" onclick="call('./#',0,0)">
+            </div>
+        </div>
+        <div class="f50">
+            <h2 style="margin:5px 15px 5px 5px;color:#fff">
+                <b id="unpwa"></b>
+            </h2>
+            <div class="f50">
+                    <a id="searchhide" onclick="$0=document.querySelector('#searchbar'); 	
+                    $0.style.display= ($0.style.display=='none')?'flex':'none';">
+                        <svg focusable="false" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#fff"></path>
+                        </svg>
+                    </a>
+                <button id="submit" onclick="call('#page=submitad',0)" style="border:none">+</button>
+                </div>
+        </div>
+    </header>
+    <form id="searchbar" onsubmit="return false" style="display: none">
+        <input id="searchtext" type="text" placeholder="Search ...">
+        <select id="searchcat" style="font-size:16px" id="searchcategory">
+            <option value="all">All</option>
+            <option value="mobiles">Mobiles</option>
+            <option value="computers">Computers</option>
+            <option value="property">Property</option>
+            <option value="vehicles">Vehicles</option>
+        </select>
+        <button id="searchicon" onclick="call(`/#page=search&text=${document.querySelector('#searchtext').value}&cat=${document.querySelector('#searchcat').value}`)">
+            <svg focusable="false" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#000000"></path>
+            </svg>
+        </button>
+    </form>
+    <div id="nav" class="sidenav hide">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav(this.parentNode)">&times;</a>
+        <a onclick="closeNav(this.parentNode);call('./#',0,0)">Homepage</a>
+        <a onclick="closeNav(this.parentNode);logout(this)" id="l-out" class="signin">Sign Out</a>
+        <a onclick="closeNav(this.parentNode);call('/#page=login')" id="l-in" class="signout">Sign In</a>
+        <a onclick="closeNav(this.parentNode);call('/#page=inbox')" id="inbox" class="signin">Inbox</a>
+        <a onclick="closeNav(this.parentNode);call('/#page=myads')" id="myads" class="signin">My Ads</a>
+        <a onclick="closeNav(this.parentNode);call('/#page=myfavorite')" id="myfavorite" class="signin">My Favorite</a>
+        <a onclick="closeNav(this.parentNode);call('/#page=register')" id="register" class="signout">Register</a>
+    </div>
+    <div class="container">
+        <div class="man">
+            <div class="loader"></div>
+        </div>
+    </div>
+    <script src="/__/firebase/5.2.0/firebase-app.js"></script>
+    <script src="/__/firebase/5.2.0/firebase-auth.js"></script>
+    <script src="/__/firebase/5.2.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/5.2.0/firebase-storage.js"></script>
+    <script src="/__/firebase/5.2.0/firebase-messaging.js"></script>
+    <script src="/__/firebase/5.2.0/firebase-functions.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script>
+        var page = locationVar("page") || "category";
+        let first =true;
+        if(location.origin+"/"==location.href)
+        {window.location.href="/#"}
+        else pageLoad(page);
+    </script>
+</body>
+</html>

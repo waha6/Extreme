@@ -1,0 +1,5 @@
+Extra
+.vscode
+functions/node_modules
+.firebaserc
+firebase.json
